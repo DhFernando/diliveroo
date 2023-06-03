@@ -3,6 +3,7 @@ import axios from 'axios'
 import thunk from 'redux-thunk'
 const initState = {
     sideDrawerOpen: false, 
+    openReviewModal: false,
     counter: 0
 }
 const reducerFn = (state = initState , action) => {
@@ -12,6 +13,9 @@ const reducerFn = (state = initState , action) => {
     }
     if(action.type === 'TOGGLE_DRAWER'){
         return { ...state, sideDrawerOpen: !state.sideDrawerOpen}
+    } 
+    if(action.type === 'TOGGLE_REVIEW_MODAL'){
+        return { ...state, openReviewModal: !state.openReviewModal}
     } 
     return state
 }

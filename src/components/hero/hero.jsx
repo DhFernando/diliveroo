@@ -9,6 +9,9 @@ import AtomicButton from '../../atoms/button';
 import GroupIcon from '@mui/icons-material/Group';
 import DirectionsBikeIcon from '@mui/icons-material/DirectionsBike';
 import Link from '@mui/material/Link';
+import ErrorOutlineIcon from '@mui/icons-material/ErrorOutline';
+import StarIcon from '@mui/icons-material/Star';
+import ReviewModal from '../review_modal/review_modal';
 
 import { useSelector, useDispatch } from 'react-redux'
 import { useEffect } from 'react';
@@ -30,10 +33,16 @@ const Image = styled('img')({
 
 export default function Hero() {
   const counter = useSelector((state)=> state)
+  const openReviewModal = useSelector((state)=> state.openReviewModal)
   const dispatch = useDispatch()
   const increment = () =>{ 
     dispatch({ type: 'INC' })
   }
+
+  const handleReviewModalToggle = () => {
+    dispatch({ type: 'TOGGLE_REVIEW_MODAL' })
+  }
+
   useEffect(()=>{
     console.log(counter)
   },[])
@@ -59,8 +68,11 @@ export default function Hero() {
             0.20 miles away·Closes at 21:00·£0.99 delivery·£7.00 minimum { JSON.stringify(counter) }
           </Typography>
           <button onClick={()=> increment()}>inc</button>
-          <BasicCard />
-          <BasicCard />
+          <BasicCard icon={<ErrorOutlineIcon  aria-label="recipe" /> } title={'Info'} subheader={'Map, allergens and hygiene rating'}/>
+          <Box onClick={()=> handleReviewModalToggle()} >
+            <BasicCard icon={<StarIcon  aria-label="ratings" /> } title={'Info'} subheader={'Map, allergens and hygiene rating'}/>
+          </Box>
+           
         </Grid>
         <Grid item xs={3} sx={{ pr: 4 }}> 
           <Box sx={{ display: 'flex', flexDirection: 'row', justifyContent: 'flex-end', mb: 2 }}>
@@ -75,6 +87,7 @@ export default function Hero() {
           </Box>  
         </Grid> 
       </Grid>
+      <ReviewModal openReviewModal={openReviewModal} handleReviewModalToggle={handleReviewModalToggle}/>
     </Box>
   );
 }
