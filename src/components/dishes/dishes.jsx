@@ -22,8 +22,8 @@ function Dishes() {
     <Box sx={{ mt: 5, mb: 5 }}>
       <Grid container >
         <Grid item xs={8}> 
-          {menu.map((_menu)=> (
-            <>
+          {menu.map((_menu, index)=> (
+            <Box key={index}>
               <Typography variant='h5' sx={{ mb: 2, mt: 2 }}><strong>{_menu.name}</strong></Typography>
               <Grid container spacing={2} >  
                 {_menu.dishes.map((dish,index)=>(
@@ -32,7 +32,7 @@ function Dishes() {
                   </Grid>
                 ))} 
               </Grid> 
-            </> 
+            </Box> 
             ))}
           
         </Grid>

@@ -13,30 +13,24 @@ const initialState = {
 
 export const getRestaurants = createAsyncThunk(
     'restaurant/fetch',
-    async () => {
-        console.log ('response calling')
-        const response = await axios.get('http://localhost:8080/api/v1/restaurant/1')
-        console.log (response.data)
+    async () => { 
+        const response = await axios.get('http://localhost:8080/api/v1/restaurant/1') 
         return response.data; 
       }
 )
 
 export const getMenuByResturantId = createAsyncThunk(
   'restaurant/menu',
-  async () => {
-    console.log ('menu fetching')
-    const response = await axios.get('http://localhost:8080/api/v1/restaurant/1/menu')
-    console.log (response.data)
+  async () => { 
+    const response = await axios.get('http://localhost:8080/api/v1/restaurant/1/menu') 
     return response.data; 
   },
 )
 
 export const getReviewsByResturantId = createAsyncThunk(
   'restaurant/reviews',
-  async () => {
-    console.log ('reviews fetching')
-    const response = await axios.get('http://localhost:8080/api/v1/reviews/1')
-    console.log (response.data)
+  async () => { 
+    const response = await axios.get('http://localhost:8080/api/v1/reviews/1') 
     return response.data; 
   },
 )

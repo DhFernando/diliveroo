@@ -33,7 +33,7 @@ export default function Footer() {
       <Container maxWidth="lg">
        
         <Grid container spacing={2}>
-          <Grid  xs={12} sm={3} sx={{  }} > 
+          <Grid item xs={12} sm={3} > 
               <Box sx={{ backgroundColor: '#434747', width: '85%', padding: '20px 0px 20px 20px', borderRadius: 1, height: 400 }}>
                 <Typography variant="h6"   gutterBottom>
                   Discover Deliveroo
@@ -45,7 +45,7 @@ export default function Footer() {
                 ))} 
               </Box>  
           </Grid> 
-          <Grid  xs={12} sm={3}  > 
+          <Grid item  xs={12} sm={3}  > 
               <Box sx={{ backgroundColor: '#434747', width: '85%', padding: '20px 0px 20px 20px', borderRadius: 1, height: 400 }}>
                 <Typography variant="h6"   gutterBottom>
                   Legal
@@ -57,7 +57,7 @@ export default function Footer() {
                 ))}
               </Box>  
           </Grid>
-          <Grid  xs={12} sm={3}  > 
+          <Grid item xs={12} sm={3}  > 
               <Box sx={{ backgroundColor: '#434747', width: '85%', padding: '20px 0px 20px 20px', borderRadius: 1, height: 400 }}>
                 <Typography variant="h6"   gutterBottom>
                   Help
@@ -69,7 +69,7 @@ export default function Footer() {
                 ))} 
               </Box>  
           </Grid>
-          <Grid  xs={12} sm={3}  > 
+          <Grid item xs={12} sm={3}  > 
               <Box sx={{ backgroundColor: '#434747', width: '85%', padding: '20px 0px 20px 10px', borderRadius: 1, height: 400 }}>
                 <Typography variant="h6"   gutterBottom>
                 Take Deliveroo with you

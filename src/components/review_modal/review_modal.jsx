@@ -60,7 +60,7 @@ export default function ReviewModal({openReviewModal, handleReviewModalToggle}) 
                     <Grid item xs={9}>
                         <Stack spacing={2} sx={{ flex: 1 }}>
                            { [60, 10, 5, 25, 15].map((rate, index) => (
-                            <>
+                            
                                 <LinearProgress key={index} sx={{
                                     height: 7,
                                     borderRadius: 1, 
@@ -70,7 +70,7 @@ export default function ReviewModal({openReviewModal, handleReviewModalToggle}) 
                                         }
                                     }}  
                                     variant="determinate" value={rate} />
-                            </>
+                          
                            ))}
                         </Stack> 
                     </Grid>  

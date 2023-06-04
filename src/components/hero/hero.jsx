@@ -77,7 +77,7 @@ export default function Hero() {
           </Typography>
           <BasicCard icon={<ErrorOutlineIcon  aria-label="recipe" /> } titleTypography='h6'  title={'Info'} subheader={'Map, allergens and hygiene rating'}/>
           <Box onClick={()=> handleReviewModalToggle()} sx={{ color: 'green' }} >
-            <BasicCard icon={<StarIcon  aria-label="ratings" /> } titleTypography='h6' title={`${currentResturentInformation.hygieneRating} Ecellent`} subheader={`${currentResturentInformation.hygieneRating} Ecellent`}/>
+            <BasicCard icon={<StarIcon  aria-label="ratings" /> } titleTypography='h6' title={`${currentResturentInformation.hygieneRating} Ecellent`} subheader={`See all 500 reviews`}/>
           </Box>
            
         </Grid>
