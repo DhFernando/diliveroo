@@ -3,7 +3,6 @@ import axios from 'axios'
 
 
 const initialState = {
-    
     sideDrawerOpen: false, 
     openReviewModal: false,
     openDishModal: false,
@@ -33,9 +32,9 @@ export const getMenuByResturantId = createAsyncThunk(
 )
 
 export const getReviewsByResturantId = createAsyncThunk(
-  'restaurant/menu',
+  'restaurant/reviews',
   async () => {
-    console.log ('menu fetching')
+    console.log ('reviews fetching')
     const response = await axios.get('http://localhost:8080/api/v1/reviews/1')
     console.log (response.data)
     return response.data; 
@@ -52,7 +51,7 @@ export const restaurantSlice = createSlice({
   extraReducers: (builder) => { 
     builder.addCase(getRestaurants.fulfilled, (state, action) => { 
       state.currentResturentInformation = action.payload.data;  
-    });
+    })
 
     builder.addCase(getMenuByResturantId.fulfilled, (state, action) => { 
       state.menu = action.payload.data;  

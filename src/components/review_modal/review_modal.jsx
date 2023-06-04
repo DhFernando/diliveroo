@@ -5,7 +5,8 @@ import Modal from '@mui/material/Modal';
 import { Button, Divider, Grid, LinearProgress, Rating } from '@mui/material';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import InsertEmoticonIcon from '@mui/icons-material/InsertEmoticon'; 
-
+import { getReviewsByResturantId } from '../../store/slices/restaurant'
+import { useSelector, useDispatch } from 'react-redux'
 import { Stack } from '@mui/system';
 
 const style = {
@@ -21,6 +22,15 @@ const style = {
 };
 
 export default function ReviewModal({openReviewModal, handleReviewModalToggle}) {
+    const dispatch = useDispatch()
+    React.useEffect(()=>{
+        dispatch(getReviewsByResturantId())
+    }, [])
+    const { reviews } = useSelector(state=> state.restaurant) 
+
+    if(reviews === null){
+        return <>loading...!</>
+    }
   return (
     <div>
       <Modal
@@ -72,8 +82,8 @@ export default function ReviewModal({openReviewModal, handleReviewModalToggle}) 
                 <Divider />
                 <Box sx={{ height: '400px' }}>
                     <Box  sx={{ overflow: 'hidden', overflowY: 'scroll' }}>
-                        {[1, 1].map((element, index)=>(
-                            <Box  key={index}>
+                        {reviews.slice(0,2).map((element)=>(
+                            <Box  key={element.id}>
                                 <Box sx={{ mb: 1 }}>
                                     <Box sx={{ mt: 2, mb: 2 }}>
                                         <Box sx={{
@@ -81,7 +91,7 @@ export default function ReviewModal({openReviewModal, handleReviewModalToggle}) 
                                             flexDirection: 'row'
                                         }}>
                                             <AccountCircleIcon sx={{ mr: 2 }} />
-                                            <Typography variant='body'>Deliveroo customer</Typography>
+                                            <Typography variant='body'>{element.customerName}</Typography>
                                         </Box>
                                         <Box sx={{
                                             display: 'flex',
@@ -90,13 +100,13 @@ export default function ReviewModal({openReviewModal, handleReviewModalToggle}) 
                                             <Rating 
                                                 sx={{ mr: 2, color: '#00ccbc' }}
                                                 name="simple-controlled"
-                                                value={4.3} 
+                                                value={element.stars} 
                                             />
-                                            <Typography variant='body2'>2020 jan 21</Typography>
+                                            <Typography variant='body2'>{element.date}</Typography>
                                         </Box>
                                     </Box>
                                     <Box sx={{ mb:2 }}>
-                                        <Typography variant='legend'>Very good indeed. YUMMY!</Typography>
+                                        <Typography variant='legend'>{element.content}</Typography>
                                     </Box>
                                     <Box sx={{
                                             color: '#00ccbc',
