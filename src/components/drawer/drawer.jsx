@@ -11,24 +11,24 @@ import ListItemText from '@mui/material/ListItemText';
 import HelpOutlineIcon from '@mui/icons-material/HelpOutline';
 import logo from './../../images/Deliveroo-logo.png';
 import { useSelector, useDispatch } from 'react-redux'
+import { toggleDrawer } from '../../store/slices/restaurant';
 
 export default function SideDrawer() {
-  const openDrawer = false 
-  // const openDrawer = useSelector((state)=> state.sideDrawerOpen) 
+  const { sideDrawerOpen } = useSelector(state=> state.restaurant) 
   const dispatch = useDispatch()
    
-  const toggleDrawer = () => (event) => {
+  const handleToggleDrawer = () => (event) => {
     if (event.type === 'keydown' && (event.key === 'Tab' || event.key === 'Shift')) {
       return;
     }
-    // dispatch({ type: 'TOGGLE_DRAWER' })
+    dispatch(toggleDrawer())
   };
 
   const list = (
     <Box
       sx={{ width: 370 }}
-      onClick={toggleDrawer()}
-      onKeyDown={toggleDrawer()}
+      onClick={handleToggleDrawer()}
+      onKeyDown={handleToggleDrawer()}
     >
       <Box sx={{ padding: 1, pl: 5 }}>
         <img src={logo} alt="Logo" style={{ height: 55 }} />
@@ -54,8 +54,8 @@ export default function SideDrawer() {
     <>
       <Drawer
         anchor="right"
-        open={openDrawer}
-        onClose={toggleDrawer()}
+        open={sideDrawerOpen}
+        onClose={handleToggleDrawer()}
       >
         {list}
       </Drawer>

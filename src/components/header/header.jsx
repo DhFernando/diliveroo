@@ -13,6 +13,7 @@ import HomeIcon from '@mui/icons-material/Home';
 import MenuIcon from '@mui/icons-material/Menu';
 import { useDispatch } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
+import { toggleDrawer } from '../../store/slices/restaurant';
 
 const Search = styled('div')(({ theme }) => ({
   position: 'relative',
@@ -57,13 +58,12 @@ const CustomAppBar = styled(AppBar)({
 
 export default function Header() {
   const navigate = useNavigate();
-  const dispatch = useDispatch()
-
-  const toggleDrawer = (event) => { 
+  const dispatch = useDispatch() 
+  const HandelToggleDrawer = (event) => { 
     if (event.type === 'keydown' && (event.key === 'Tab' || event.key === 'Shift')) {
       return;
     }
-    // dispatch({ type: 'TOGGLE_DRAWER' })
+    dispatch(toggleDrawer())
   };
 
   return (
@@ -88,9 +88,9 @@ export default function Header() {
             <Box sx={{ marginRight: 2 }} onClick={()=> {navigate('/login')}}>
               <AtomicButton className="header__button" icon={<HomeIcon />} label='Sign up or log in'/>
             </Box> 
-            <Box sx={{ marginRight: 2 }} onClick={(e)=> toggleDrawer(e)}>
+            <Box sx={{ marginRight: 2 }} onClick={(e)=> HandelToggleDrawer(e)}>
               <AtomicButton  className="header__button" icon={<MenuIcon />} label='Menu'/>
-            </Box> 
+            </Box>  
           </Toolbar>
         </CustomAppBar>  
       </Box>

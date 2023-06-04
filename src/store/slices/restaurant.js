@@ -6,7 +6,7 @@ const initialState = {
     currentResturentInformation: null,
     sideDrawerOpen: false, 
     openReviewModal: false,
-    openDishModal: false,
+    openDishModal: false
 }
 
 export const getRestaurants = createAsyncThunk(
@@ -23,7 +23,8 @@ export const restaurantSlice = createSlice({
   name: 'restaurant',
   initialState,
   reducers: {
-    toggleReviewModal: (state) => {state.openReviewModal = !state.openReviewModal}
+    toggleReviewModal: (state) => {state.openReviewModal = !state.openReviewModal},
+    toggleDrawer: (state) => {state.sideDrawerOpen = !state.sideDrawerOpen}
   },
   extraReducers: (builder) => { 
     builder.addCase(getRestaurants.fulfilled, (state, action) => { 
@@ -32,5 +33,5 @@ export const restaurantSlice = createSlice({
   },
 })
 
-export const { toggleReviewModal } = restaurantSlice.actions
+export const { toggleReviewModal, toggleDrawer } = restaurantSlice.actions
 export default restaurantSlice.reducer
