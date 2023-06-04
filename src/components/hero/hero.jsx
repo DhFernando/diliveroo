@@ -68,16 +68,16 @@ export default function Hero() {
             {currentResturentInformation.name}
           </Typography>
           <Typography variant="body" gutterBottom>
-            10 - 20 min· Chicken·Salads·Healthy
+            { `${currentResturentInformation.openHours} - ${currentResturentInformation.tags}` } 
           </Typography>
           <br />
           <br />
           <Typography variant="body" gutterBottom>
-            0.20 miles away·Closes at 21:00·£0.99 delivery·£7.00 minimum
+            0.20 miles away - Closes at 21:00 - {currentResturentInformation.deliveryFee} delivery - £7.00 minimum
           </Typography>
-          <BasicCard icon={<ErrorOutlineIcon  aria-label="recipe" /> } title={'Info'} subheader={'Map, allergens and hygiene rating'}/>
-          <Box onClick={()=> handleReviewModalToggle()} >
-            <BasicCard icon={<StarIcon  aria-label="ratings" /> } title={'Info'} subheader={'Map, allergens and hygiene rating'}/>
+          <BasicCard icon={<ErrorOutlineIcon  aria-label="recipe" /> } titleTypography='h6'  title={'Info'} subheader={'Map, allergens and hygiene rating'}/>
+          <Box onClick={()=> handleReviewModalToggle()} sx={{ color: 'green' }} >
+            <BasicCard icon={<StarIcon  aria-label="ratings" /> } titleTypography='h6' title={`${currentResturentInformation.hygieneRating} Ecellent`} subheader={`${currentResturentInformation.hygieneRating} Ecellent`}/>
           </Box>
            
         </Grid>
@@ -94,7 +94,6 @@ export default function Hero() {
           </Box>  
         </Grid> 
       </Grid>
-      {JSON.stringify(openReviewModal)}
       <ReviewModal openReviewModal={openReviewModal} handleReviewModalToggle={handleReviewModalToggle}/>
     </Box>
   );

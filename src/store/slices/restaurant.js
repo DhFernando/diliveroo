@@ -14,6 +14,7 @@ export const getRestaurants = createAsyncThunk(
     async () => {
         console.log ('response calling')
         const response = await axios.get('http://localhost:8080/api/v1/restaurant/1')
+        console.log (response.data)
         return response.data; 
       }
 )
