@@ -17,7 +17,7 @@ export default function ItemCard({dish}) {
             {dish.description}
           </Typography>
           <Typography variant="subtitle2" color="text.secondary" component="div">
-            {dish.price}
+            {`$ ${dish.price}`}
           </Typography>
         </CardContent>
       </Box>
