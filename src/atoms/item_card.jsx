@@ -4,28 +4,27 @@ import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
-import img from '../images/hero-image.png';
 
-export default function ItemCard() {
+export default function ItemCard({dish}) {
   return (
     <Card sx={{ display: 'flex', maxWidth: 550, minHeight: 132, alignItems: 'center' }}>
       <Box sx={{ display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
         <CardContent sx={{ flex: '1 0 auto', width: 300 }}>
           <Typography component="div" variant="h6">
-            Live From Space
+            {dish.name}
           </Typography>
           <Typography variant="subtitle1" color="text.secondary" component="div">
-            Mac Miller
+            {dish.description}
           </Typography>
           <Typography variant="subtitle2" color="text.secondary" component="div">
-            $17.89
+            {dish.price}
           </Typography>
         </CardContent>
       </Box>
       <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'flex-end', flex: 1 }}>
         <CardMedia
           component="img"
-          src={img}
+          src={dish.imageUrl}
           alt=""
           sx={{ width: 100, height: 100, paddingRight: 4 }}
         />

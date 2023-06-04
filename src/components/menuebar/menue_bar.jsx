@@ -2,14 +2,17 @@ import * as React from 'react';
 import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
 import Box from '@mui/material/Box'; 
-import { Divider } from '@mui/material';
- 
+import { Divider } from '@mui/material'; 
+import { useSelector } from 'react-redux';
 
 export default function MenueBar() {
+  const { menu } = useSelector(state=> state.restaurant) 
   const [value, setValue] = React.useState(0);
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
+
+  if(menu === null) { return <>loading...!</> }
 
   return (
     <Box sx={{ maxWidth: '100%', bgcolor: 'background.paper' }} >
@@ -35,13 +38,9 @@ export default function MenueBar() {
 
         }}
       > 
-        <Tab  label="Item One" /> 
-        <Tab label="Item Two" />  
-        <Tab label="Item Three" />
-        <Tab label="Item Four" />
-        <Tab label="Item Five" />
-        <Tab label="Item Six" />
-        <Tab label="Item Seven" />
+      {menu.map((el)=>(
+        <Tab key={el.id} label={el.name} />
+      ) )} 
       </Tabs>
       <Divider />
     </Box>

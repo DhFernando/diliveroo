@@ -46,7 +46,8 @@ export const restaurantSlice = createSlice({
   initialState,
   reducers: {
     toggleReviewModal: (state) => {state.openReviewModal = !state.openReviewModal},
-    toggleDrawer: (state) => {state.sideDrawerOpen = !state.sideDrawerOpen}
+    toggleDrawer: (state) => {state.sideDrawerOpen = !state.sideDrawerOpen},
+    toggleDishMoal: (state) => {state.openDishModal = !state.openDishModal}
   },
   extraReducers: (builder) => { 
     builder.addCase(getRestaurants.fulfilled, (state, action) => { 
@@ -63,5 +64,5 @@ export const restaurantSlice = createSlice({
   },
 })
 
-export const { toggleReviewModal, toggleDrawer } = restaurantSlice.actions
+export const { toggleReviewModal, toggleDrawer, toggleDishMoal } = restaurantSlice.actions
 export default restaurantSlice.reducer
