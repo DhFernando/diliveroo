@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { useEffect } from 'react';
 import { styled } from '@mui/material/styles';
 import Box from '@mui/material/Box'; 
 import Grid from '@mui/material/Grid';
@@ -13,9 +14,8 @@ import ErrorOutlineIcon from '@mui/icons-material/ErrorOutline';
 import StarIcon from '@mui/icons-material/Star';
 import ReviewModal from '../review_modal/review_modal';
 
-import { useSelector, useDispatch } from 'react-redux'
-import { useEffect } from 'react';
-
+import { useSelector, useDispatch } from 'react-redux' 
+import { getRestaurants, toggleReviewModal } from '../../store/slices/restaurant'
 
 const ImageWrapper = styled('div')({
   width: '100%',
@@ -31,22 +31,30 @@ const Image = styled('img')({
   objectFit: 'cover',
 });
 
-export default function Hero() {
-  const counter = useSelector((state)=> state)
-  const openReviewModal = useSelector((state)=> state.openReviewModal)
+export default function Hero() {  
+  
   const dispatch = useDispatch()
-  const increment = () =>{ 
-    dispatch({ type: 'INC' })
-  }
-
+  const {currentResturentInformation,openReviewModal } = useSelector(state=> state.restaurant) 
+  const [isDataFetchingComplete, setIsDataFetchingComplete] = React.useState(false)
   const handleReviewModalToggle = () => {
-    dispatch({ type: 'TOGGLE_REVIEW_MODAL' })
+    dispatch(toggleReviewModal())
   }
 
   useEffect(()=>{
-    console.log(counter)
+    // fetch restaurant info
+    dispatch(getRestaurants())
   },[])
 
+  useEffect(()=>{
+    if(currentResturentInformation) {
+      setIsDataFetchingComplete(true)
+    }
+  },[currentResturentInformation])
+
+  if(!isDataFetchingComplete) {
+    return <>loding...</>
+  }
+   
   return (
     <Box sx={{ flexGrow: 1, mb: 0, mt: 4 }}>
       <Grid container spacing={2}>
@@ -57,7 +65,7 @@ export default function Hero() {
         </Grid>
         <Grid item xs={5}>
           <Typography variant="h4" gutterBottom>
-            Tossed - St Martin's Lane
+            {currentResturentInformation.name}
           </Typography>
           <Typography variant="body" gutterBottom>
             10 - 20 min· Chicken·Salads·Healthy
@@ -65,9 +73,8 @@ export default function Hero() {
           <br />
           <br />
           <Typography variant="body" gutterBottom>
-            0.20 miles away·Closes at 21:00·£0.99 delivery·£7.00 minimum { JSON.stringify(counter) }
+            0.20 miles away·Closes at 21:00·£0.99 delivery·£7.00 minimum
           </Typography>
-          <button onClick={()=> increment()}>inc</button>
           <BasicCard icon={<ErrorOutlineIcon  aria-label="recipe" /> } title={'Info'} subheader={'Map, allergens and hygiene rating'}/>
           <Box onClick={()=> handleReviewModalToggle()} >
             <BasicCard icon={<StarIcon  aria-label="ratings" /> } title={'Info'} subheader={'Map, allergens and hygiene rating'}/>
@@ -87,6 +94,7 @@ export default function Hero() {
           </Box>  
         </Grid> 
       </Grid>
+      {JSON.stringify(openReviewModal)}
       <ReviewModal openReviewModal={openReviewModal} handleReviewModalToggle={handleReviewModalToggle}/>
     </Box>
   );

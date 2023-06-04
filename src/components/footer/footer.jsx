@@ -9,12 +9,16 @@ import appstorelogo from "./../../images/appstorelogo.png"
 
 export default function Footer() {
   const [deliverooDiscoversLinks, setdeliverooDiscoversLinks] = React.useState([]);
+  const [legalLinks, setLegalLinks] = React.useState([]);
+  const [helpLinks, setHelpLinks] = React.useState([]);
 
   React.useEffect(() => {
     setdeliverooDiscoversLinks([
       'Investors', 'About us', 'Takeaway',  'More', 'Newsroom', 'Engineering blog','Design blog' ,'Gift Cards','Careers',
       'Restaurant signup', 'Become a rider', 'Deliveroo Talent Directory'
     ])
+    setLegalLinks(['Terms and conditions', 'Privacy', 'Cookies', 'Modern Slavery Statement',  'Tax Strategy', 'Section 172 Statement',]);
+    setHelpLinks(['Contact',  'FAQs', 'Cuisines', 'Brands',]);
   },[]);
 
   return (
@@ -29,8 +33,8 @@ export default function Footer() {
       <Container maxWidth="lg">
        
         <Grid container spacing={2}>
-          <Grid  xs={12} sm={3}  > 
-              <Box sx={{ backgroundColor: '#434747', width: '85%', padding: '20px 0px 20px 20px', borderRadius: 1 }}>
+          <Grid  xs={12} sm={3} sx={{  }} > 
+              <Box sx={{ backgroundColor: '#434747', width: '85%', padding: '20px 0px 20px 20px', borderRadius: 1, height: 400 }}>
                 <Typography variant="h6"   gutterBottom>
                   Discover Deliveroo
                 </Typography>
@@ -42,19 +46,23 @@ export default function Footer() {
               </Box>  
           </Grid> 
           <Grid  xs={12} sm={3}  > 
-              <Box sx={{ backgroundColor: '#434747', width: '85%', padding: '20px 0px 20px 20px', borderRadius: 1 }}>
+              <Box sx={{ backgroundColor: '#434747', width: '85%', padding: '20px 0px 20px 20px', borderRadius: 1, height: 400 }}>
                 <Typography variant="h6"   gutterBottom>
-                  Discover Deliveroo
+                  Legal
                 </Typography>
-                <img src={appstorelogo} style={{ maxWidth: 200 }} alt="" />
+                {legalLinks.map((item, index) =>( 
+                  <Typography variant="body2"   key={index} sx={{ mb: 1 }}>
+                  { item }
+                  </Typography>
+                ))}
               </Box>  
           </Grid>
           <Grid  xs={12} sm={3}  > 
-              <Box sx={{ backgroundColor: '#434747', width: '85%', padding: '20px 0px 20px 20px', borderRadius: 1 }}>
+              <Box sx={{ backgroundColor: '#434747', width: '85%', padding: '20px 0px 20px 20px', borderRadius: 1, height: 400 }}>
                 <Typography variant="h6"   gutterBottom>
-                  Discover Deliveroo
+                  Help
                 </Typography>
-                {deliverooDiscoversLinks.map((item, index) =>( 
+                {helpLinks.map((item, index) =>( 
                   <Typography variant="body2"   key={index} sx={{ mb: 1 }}>
                   { item }
                   </Typography>
@@ -62,7 +70,7 @@ export default function Footer() {
               </Box>  
           </Grid>
           <Grid  xs={12} sm={3}  > 
-              <Box sx={{ backgroundColor: '#434747', width: '85%', padding: '20px 0px 20px 20px', borderRadius: 1 }}>
+              <Box sx={{ backgroundColor: '#434747', width: '85%', padding: '20px 0px 20px 10px', borderRadius: 1, height: 400 }}>
                 <Typography variant="h6"   gutterBottom>
                 Take Deliveroo with you
                 </Typography>
@@ -89,7 +97,7 @@ export default function Footer() {
 
           <Grid item xs={12} sm={4}>
             <Box mt={0}>
-              <Typography variant="body2" align="right" sx={{ width: '95%' }}>
+              <Typography variant="body2" align="right" sx={{ width: '90%' }}>
                   {"© "}{new Date().getFullYear()}{" "} 
                   Deliveroo   
               </Typography>

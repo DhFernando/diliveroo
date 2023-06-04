@@ -13,14 +13,15 @@ import logo from './../../images/Deliveroo-logo.png';
 import { useSelector, useDispatch } from 'react-redux'
 
 export default function SideDrawer() {
-  const openDrawer = useSelector((state)=> state.sideDrawerOpen) 
+  const openDrawer = false 
+  // const openDrawer = useSelector((state)=> state.sideDrawerOpen) 
   const dispatch = useDispatch()
    
   const toggleDrawer = () => (event) => {
     if (event.type === 'keydown' && (event.key === 'Tab' || event.key === 'Shift')) {
       return;
     }
-    dispatch({ type: 'TOGGLE_DRAWER' })
+    // dispatch({ type: 'TOGGLE_DRAWER' })
   };
 
   const list = (

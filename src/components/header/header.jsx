@@ -63,7 +63,7 @@ export default function Header() {
     if (event.type === 'keydown' && (event.key === 'Tab' || event.key === 'Shift')) {
       return;
     }
-    dispatch({ type: 'TOGGLE_DRAWER' })
+    // dispatch({ type: 'TOGGLE_DRAWER' })
   };
 
   return (
