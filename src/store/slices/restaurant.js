@@ -11,10 +11,11 @@ const initialState = {
     reviews: null
 }
 
+
 export const getRestaurants = createAsyncThunk(
     'restaurant/fetch',
     async () => { 
-        const response = await axios.get('http://localhost:8080/api/v1/restaurant/1') 
+        const response = await axios.get('http://localhost:8080/api/v1/restaurant/1', { headers: { Authorization: localStorage.getItem('token')} }); 
         return response.data; 
       }
 )
@@ -22,7 +23,7 @@ export const getRestaurants = createAsyncThunk(
 export const getMenuByResturantId = createAsyncThunk(
   'restaurant/menu',
   async () => { 
-    const response = await axios.get('http://localhost:8080/api/v1/restaurant/1/menu') 
+    const response = await axios.get('http://localhost:8080/api/v1/restaurant/1/menu', { headers: { Authorization: localStorage.getItem('token')} }) 
     return response.data; 
   },
 )
@@ -30,7 +31,7 @@ export const getMenuByResturantId = createAsyncThunk(
 export const getReviewsByResturantId = createAsyncThunk(
   'restaurant/reviews',
   async () => { 
-    const response = await axios.get('http://localhost:8080/api/v1/reviews/1') 
+    const response = await axios.get('http://localhost:8080/api/v1/reviews/1', { headers: { Authorization: localStorage.getItem('token')} }) 
     return response.data; 
   },
 )

@@ -11,9 +11,10 @@ import Divider from '@mui/material/Divider';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import HomeIcon from '@mui/icons-material/Home';
 import MenuIcon from '@mui/icons-material/Menu';
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 import { toggleDrawer } from '../../store/slices/restaurant';
+import { logout } from '../../store/slices/user';
 
 const Search = styled('div')(({ theme }) => ({
   position: 'relative',
@@ -59,12 +60,20 @@ const CustomAppBar = styled(AppBar)({
 export default function Header() {
   const navigate = useNavigate();
   const dispatch = useDispatch() 
+  const {userLoggedIn} = useSelector((state)=> state.user)
   const HandelToggleDrawer = (event) => { 
     if (event.type === 'keydown' && (event.key === 'Tab' || event.key === 'Shift')) {
       return;
     }
     dispatch(toggleDrawer())
   };
+
+  const loginaction = () => {
+    if(userLoggedIn){
+      dispatch(logout())
+    }
+    navigate('/login')
+  }
 
   return (
     <Box > 
@@ -85,8 +94,8 @@ export default function Header() {
             <Box sx={{ marginRight: 2 }}>
               <AtomicButton className="header__button" icon={<ShoppingCartIcon />} label='USD 4.29'/>
             </Box> 
-            <Box sx={{ marginRight: 2 }} onClick={()=> {navigate('/login')}}>
-              <AtomicButton className="header__button" icon={<HomeIcon />} label='Sign up or log in'/>
+            <Box sx={{ marginRight: 2 }} onClick={()=> {loginaction()}}>
+              <AtomicButton className="header__button" icon={<HomeIcon />} label={userLoggedIn ? 'Logout' : 'Sign up or log in'}/>
             </Box> 
             <Box sx={{ marginRight: 2 }} onClick={(e)=> HandelToggleDrawer(e)}>
               <AtomicButton  className="header__button" icon={<MenuIcon />} label='Menu'/>

@@ -11,8 +11,7 @@ function Dishes() {
   const { openDishModal, menu } = useSelector(state=> state.restaurant) 
   useEffect(()=>{
     dispatch(getMenuByResturantId())
-  }, [])
-  // const openDishModal = useSelector((state)=> state.openDishModal)
+  }, []) 
   
   const handleDishModalToggle = () => {
     dispatch(toggleDishMoal())
