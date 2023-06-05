@@ -68,8 +68,8 @@ export default function Header() {
 
   return (
     <Box > 
-      <Box sx={{ flexGrow: 1, paddingLeft: 10, paddingRight: 10  }}>
-        <CustomAppBar position="static" style={{ background: '#fff' }}>
+      <Box sx={{ flexGrow: 1, paddingLeft: 10, paddingRight: 10,   }}>
+        <CustomAppBar position="fixed" style={{ background: '#fff',borderBottom: '1px solid #dbdbdb' }}>
           <Toolbar sx={{ justifyContent: 'space-between', height: 75 }}>
             <img src={logo} alt="Logo" style={{ height: 55 }} />
             <Search className="header__search">
@@ -92,9 +92,10 @@ export default function Header() {
               <AtomicButton  className="header__button" icon={<MenuIcon />} label='Menu'/>
             </Box>  
           </Toolbar>
-        </CustomAppBar>  
+        </CustomAppBar>
+        <Divider flexItem />  
       </Box>
-      <Divider flexItem />
+      
     </Box>
   );
 }

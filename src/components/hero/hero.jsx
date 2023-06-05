@@ -56,7 +56,7 @@ export default function Hero() {
   }
    
   return (
-    <Box sx={{ flexGrow: 1, mb: 0, mt: 4 }}>
+    <Box sx={{ flexGrow: 1, mb: 0, mt: 15 }}>
       <Grid container spacing={2}>
         <Grid item xs={4}> 
             <ImageWrapper>
@@ -65,7 +65,7 @@ export default function Hero() {
         </Grid>
         <Grid item xs={5}>
           <Typography variant="h4" gutterBottom>
-            {currentResturentInformation.name}
+            <strong>{currentResturentInformation.name}</strong>
           </Typography>
           <Typography variant="body" gutterBottom>
             { `${currentResturentInformation.openHours} - ${currentResturentInformation.tags}` } 

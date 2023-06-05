@@ -20,11 +20,12 @@ function Dishes() {
   if (menu === null){ return <>loading...!</>}
   return (
     <Box sx={{ mt: 5, mb: 5 }}>
+      
       <Grid container >
         <Grid item xs={8}> 
           {menu.map((_menu, index)=> (
             <Box key={index}>
-              <Typography variant='h5' sx={{ mb: 2, mt: 2 }}><strong>{_menu.name}</strong></Typography>
+              <Typography variant='h5' sx={{ mb: 2, mt: 2 }} id={_menu.name.replace(/[^a-zA-Z ]/g, "")}><strong>{_menu.name}</strong></Typography>
               <Grid container spacing={2} >  
                 {_menu.dishes.map((dish,index)=>(
                   <Grid item xs={6} onClick={()=> handleDishModalToggle() } key={index}>
