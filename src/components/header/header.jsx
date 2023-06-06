@@ -72,7 +72,6 @@ export default function Header() {
     if(userLoggedIn){
       dispatch(logout())
     }
-    navigate('/login')
   }
 
   return (

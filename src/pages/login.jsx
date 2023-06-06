@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { GoogleLogin } from '@react-oauth/google';
 import {
   Container,
@@ -10,14 +10,22 @@ import {
 import { Box } from '@mui/system';
 import { useDispatch, useSelector } from 'react-redux';
 import { login, singin } from '../store/slices/user'
+import { useNavigate } from 'react-router';
 
 const LoginPage = () => {
   const dispatch = useDispatch()
-  const state = useSelector(state=> state.user) 
+  const navigate = useNavigate();
+  const { userLoggedIn } = useSelector(state=> state.user) 
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [name, setName] = useState('');
   const [loginOrSingin, setLoginOrSingin] = useState('singin');
+
+  useEffect(()=>{
+    if(userLoggedIn){
+      navigate('/');
+    }
+  },[userLoggedIn])
 
   const handleEmailChange = (event) => {
     setEmail(event.target.value);
@@ -59,8 +67,7 @@ const LoginPage = () => {
   };
 
   return (
-    <Container component="main" maxWidth="xs" style={{ marginTop: '10%',marginBottom: '10%', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-      {JSON.stringify(state)}
+    <Container component="main" maxWidth="xs" style={{ marginTop: '10%',marginBottom: '10%', display: 'flex', flexDirection: 'column', alignItems: 'center' }}> 
       <Typography component="h1" variant="h5" style={{ marginBottom: '16px' }}>
         <strong>Sign up or log in</strong>
       </Typography>
