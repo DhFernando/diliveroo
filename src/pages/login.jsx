@@ -55,12 +55,7 @@ const LoginPage = () => {
     }
     reset()
   };
-
-  const handleGoogleLogin = () => {
-    // Handle login with Google
-    // You can implement the Google authentication logic here
-  };
-
+ 
   const handleFacebookLogin = () => {
     // Handle login with Facebook
     // You can implement the Facebook authentication logic here

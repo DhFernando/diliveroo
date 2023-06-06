@@ -11,8 +11,7 @@ import Divider from '@mui/material/Divider';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import HomeIcon from '@mui/icons-material/Home';
 import MenuIcon from '@mui/icons-material/Menu';
-import { useDispatch, useSelector } from 'react-redux'
-import { useNavigate } from 'react-router-dom'
+import { useDispatch, useSelector } from 'react-redux' 
 import { toggleDrawer } from '../../store/slices/restaurant';
 import { logout } from '../../store/slices/user';
 
@@ -46,10 +45,7 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
     padding: theme.spacing(1, 1, 1, 0),
     paddingLeft: `calc(1em + ${theme.spacing(4)})`,
     transition: theme.transitions.create('width'),
-    width: '100%',
-    [theme.breakpoints.up('md')]: {
-      width: '65ch',
-    },
+    minWidth: '500px',
   },
 }));
 
@@ -58,7 +54,7 @@ const CustomAppBar = styled(AppBar)({
 });
 
 export default function Header() {
-  const navigate = useNavigate();
+  
   const dispatch = useDispatch() 
   const {userLoggedIn} = useSelector((state)=> state.user)
   const HandelToggleDrawer = (event) => { 

@@ -4,12 +4,18 @@ import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
+import { sizing } from '@mui/system';
+
 
 export default function ItemCard({dish}) {
+
+  React.useEffect(() => {
+    console.log(sizing)
+  },[]);
   return (
     <Card sx={{ display: 'flex', maxWidth: 550, minHeight: 132, alignItems: 'center' }}>
       <Box sx={{ display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
-        <CardContent sx={{ flex: '1 0 auto', width: 300 }}>
+        <CardContent sx={{ flex: '1 0 auto', maxWidth: 300 }}>
           <Typography component="div" variant="h6">
             {dish.name}
           </Typography>

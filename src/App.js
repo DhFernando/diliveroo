@@ -1,4 +1,5 @@
 import './App.css';
+import React from 'react';
 import Footer from './components/footer/footer';
 import Header from './components/header/header';
 import Login from './pages/login';
