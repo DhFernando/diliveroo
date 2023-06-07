@@ -8,8 +8,7 @@ const initialState = {
  
 export const login = createAsyncThunk(
   'restaurant/login',
-  async ({email, password}) => { 
-    console.log(email, password)
+  async ({email, password}) => {  
       const response = await axios.post('http://localhost:8080/api/v1/auth/login', { email, password})  
       return response.data; 
     }
@@ -44,7 +43,7 @@ export const userSlice = createSlice({
     })
 
     builder.addCase(singin.fulfilled, (state, action) => { 
-      console.log(action)
+      console.log(action) 
       state.userInfo = {  };  
     })
   },

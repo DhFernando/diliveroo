@@ -2,7 +2,7 @@ import * as React from 'react';
 import CardHeader from '@mui/material/CardHeader'; 
 import IconButton from '@mui/material/IconButton';  
 import KeyboardArrowRightIcon from '@mui/icons-material/KeyboardArrowRight';
-import { Box } from '@mui/material';
+import { Box, Typography } from '@mui/material';
  
 
 export default function BasicCard({icon, title, subheader, titleTypography = 'none'}) {
@@ -12,12 +12,12 @@ export default function BasicCard({icon, title, subheader, titleTypography = 'no
       <CardHeader
         avatar={icon}
         action={
-          <IconButton aria-label="settings">
-            <KeyboardArrowRightIcon />
+          <IconButton aria-label="settings" > 
+              <KeyboardArrowRightIcon sx={{ color: '#00ccbc' }} /> 
           </IconButton>
         } 
         titleTypographyProps={{variant: titleTypography }}
-        title={title}
+        title={<Typography variant='subtitle1'>{title}</Typography>}
         subheader={subheader}
       />
     </Box>

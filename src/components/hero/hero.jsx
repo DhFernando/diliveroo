@@ -58,12 +58,12 @@ export default function Hero() {
   return (
     <Box sx={{ flexGrow: 1, mb: 0, mt: 15 }}>
       <Grid container spacing={2}>
-        <Grid item xs={4}> 
+        <Grid item lg={4} md={6} sm={12}> 
             <ImageWrapper>
               <Image src={img} sx={{ borderRadius: 2 }} alt="Example of a beautiful landscape" />
             </ImageWrapper> 
         </Grid>
-        <Grid item xs={5}>
+        <Grid item lg={5} md={6} sm={12}>
           <Typography variant="h4" gutterBottom>
             <strong>{currentResturentInformation.name}</strong>
           </Typography>
@@ -81,15 +81,15 @@ export default function Hero() {
           </Box>
            
         </Grid>
-        <Grid item xs={3} sx={{ pr: 4 }}> 
-          <Box sx={{ display: 'flex', flexDirection: 'row', justifyContent: 'flex-end', mb: 2 }}>
+        <Grid item lg={3} md={12} sm={12} sx={{ pr: 4, mb: 5 }}> 
+          <Box sx={{ display: 'flex', flexDirection: 'row', mb: 2 }}>
             <DirectionsBikeIcon sx={{ marginRight: 2 }} />
             <Typography variant="body" gutterBottom>
               Deliver in 10 - 20 min
             </Typography>
             <Link sx={{ ml: 2 }}>Change</Link>
           </Box>
-          <Box sx={{ display: 'flex', flexDirection: 'row', justifyContent: 'flex-end' }}>
+          <Box sx={{ display: 'flex', flexDirection: 'row',  }}>
             <AtomicButton icon={<GroupIcon />} label="Start group order"  />
           </Box>  
         </Grid> 

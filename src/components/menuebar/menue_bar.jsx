@@ -18,7 +18,6 @@ export default function MenueBar() {
   const handleScroll = () => {
     if( window.location.pathname === '/'){
       const el = document.getElementById('menuEL') 
-      console.log(window.location.pathname)
       if(el.getBoundingClientRect().y <= 75){
         setApplystyles({position: 'fixed', top: 75})
       }else {
